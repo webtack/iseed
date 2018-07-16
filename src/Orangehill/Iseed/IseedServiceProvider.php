@@ -31,20 +31,20 @@ class IseedServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerResources();
-
-        $this->app->singleton('iseed', function($app) {
-            return new Iseed;
-        });
-
+	
+	    $this->app->singleton('iseed', function ($app) {
+		    return new Iseed;
+	    });
+	    
         $this->app->booting(function() {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('Iseed', 'Orangehill\Iseed\Facades\Iseed');
         });
-
-        $this->app->singleton('command.iseed', function($app) {
-            return new IseedCommand;
-        });
-
+	
+	    $this->app->singleton('command.iseed', function ($app) {
+		    return new IseedCommand;
+	    });
+	    
         $this->commands('command.iseed');
     }
 
